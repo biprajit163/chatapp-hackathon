@@ -1,0 +1,14 @@
+.chat {
+    text-align: center;
+    width: 80vw;
+    height: 100vh;
+    background-color: lightgrey;
+    margin: auto;
+}
+
+
+.chatHeader {
+    display: flex;
+    justify-content: space-around;
+    padding: 2rem;
+}

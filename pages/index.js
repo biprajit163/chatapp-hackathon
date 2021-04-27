@@ -9,11 +9,19 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 
+// Components
+import SignIn from './components/signin';
+
 
 export default function Home() {
   return (
     <div className={styles.Home}>
-      <h1>Hello World</h1>
+      <head className="app-header">
+        <title>Chat app</title>
+      </head>
+      <body className="app-body">
+        <SignIn/>
+      </body>
     </div>
   )
 }
