@@ -16,9 +16,10 @@ import SignIn from './components/signin';
 export default function Home() {
   return (
     <div className={styles.Home}>
-      <head className="app-header">
+      <Head>
         <title>Chat app</title>
-      </head>
+        <link rel="icon" href="../public/favicon.ico"/>
+      </Head>
       <body className="app-body">
         <SignIn/>
       </body>
