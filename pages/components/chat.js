@@ -24,9 +24,7 @@ function Chat() {
             </Head>
             <header className={styles.chatHeader}>
                 <div className={styles}>
-                    <Link href="/components/chat_groups/singleChat">
-                        <FaUser size={30}/>
-                    </Link>
+                    <FaUser size={30}/>
                 </div>
                 <div className={styles}>
                     <HiUserGroup size={40}/>

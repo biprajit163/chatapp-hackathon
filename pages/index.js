@@ -10,7 +10,7 @@ import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 
 // Components
-import SignIn from './components/signin';
+import Username from './components/username';
 
 
 export default function Home() {
@@ -21,7 +21,7 @@ export default function Home() {
         <link rel="icon" href="../public/favicon.ico"/>
       </Head>
       <body className="app-body">
-        <SignIn/>
+        <Username/>
       </body>
     </div>
   )
