@@ -22,7 +22,7 @@ function username({ value, onChange, onSubmit, completed }) {
 
     if(completed) {
         return(
-            <div>Chatting as <b>{value}</b></div>
+            <div>Chatting as <b>{username}</b></div>
         );
     } else {
         return(
