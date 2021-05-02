@@ -44,6 +44,20 @@ export default function Home() {
 
   useEffect(() => connectSocket(), []);
 
+  const handleMessage = (e) => {
+    e.preventDefault();
+    
+    if(!socket) {
+      alert("Chatroom not connected, try again later.");
+      return;
+    }
+
+    if(!message || !isUsernameConfirmed) return;
+
+    socket.emit("message-submitted", {message, username});
+    setMessage("");
+  };
+
   return (
     <div className={styles.Home}>
       <Head>
@@ -51,7 +65,47 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico"/>
       </Head>
       <body className="app-body">
-        <Username/>
+        {/* Username area */}
+        <Username
+          value={username}
+          completed={isUsernameConfirmed}
+          onSubmit={() => setUsernameConfirmed(true)}
+          onChange={(value) => setUsernameConfirmed(true)}
+        />
+
+        {/* Message form */}
+        <div>
+          <form onSubmit={handleMessage}>
+            <label>
+              Type your message:
+              <input 
+                type="text"
+                name="message"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                disabled={!isUsernameConfirmed}
+              />
+            </label>
+            <input 
+              type="submit" 
+              value="submit" 
+              disabled={!isUsernameConfirmed}
+            />
+          </form>
+        </div>
+
+        {/*list of messages */}
+        <div>
+          {
+            history.map(({username, message}, i) => {
+              return(
+                <div key={i}>
+                  <b>{username}</b>: {message}
+                </div>
+              );
+            })
+          }
+        </div>
       </body>
     </div>
   )

@@ -4,30 +4,14 @@ import styles from '../../styles/signin.module.css';
 
 function username({ value, onChange, onSubmit, completed }) {
 
-    const [username, setUsername] = useState("");
-
-    let handleSubmit = (e) => {
-        var frm = document.getElementById("username");
-
-        e.preventDefault();
-        console.log(username);
-        setUsername("");
-
-        frm.value = "";
-    }
-
-    let handleChange = (e) => {
-        setUsername(e.target.value);
-    }
-
     if(completed) {
         return(
-            <div>Chatting as <b>{username}</b></div>
+            <div>Chatting as <b>{value}</b></div>
         );
     } else {
         return(
             <div className={styles.signin}>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={(e) => e.preventDefault() || onSubmit(value)}>
                     <label htmlFor="username">Username</label>
                     <input 
                         type="text"
@@ -35,7 +19,7 @@ function username({ value, onChange, onSubmit, completed }) {
                         id="username"
                         placeholder="enter username..."
                         required
-                        onChange={handleChange}
+                        onChange={(e) => e.preventDefault() || onChange(e.target.value)}
                     />
                     <button type="submit" className="join-btn">Join Chat</button>
                 </form>
